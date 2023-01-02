@@ -25,7 +25,7 @@ public class ObjectSpawner : MonoBehaviour
 
     }
 
-    void AssignOtherObject(ObjectData objectData)
+    public void AssignOtherObject(ObjectData objectData)
     {
         assignedObject = objectData;
         DestroyPreviousSpawnedGameObject();
@@ -34,7 +34,7 @@ public class ObjectSpawner : MonoBehaviour
 
     void SpawnObjectPrefab(GameObject objectToSpawn)
     {
-
+        spawnedGameObject = (GameObject)Instantiate(objectToSpawn, transform.position, transform.rotation);
     }
 
     void DestroyPreviousSpawnedGameObject()
