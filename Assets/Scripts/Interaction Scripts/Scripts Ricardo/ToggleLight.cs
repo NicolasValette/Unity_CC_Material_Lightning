@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class ToggleLight : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<Light> LightsList = new List<Light>();
+
+    public void ToogleLights()
     {
-        
+        for (int i = 0; i < LightsList.Count; i++)
+        {
+            LightsList[i].enabled = !LightsList[i].enabled;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeLightColor(ColorData colorData)
     {
-        
+        for (int i = 0; i < LightsList.Count; i++)
+        {
+            LightsList[i].color = colorData.color;
+        }
     }
 }
