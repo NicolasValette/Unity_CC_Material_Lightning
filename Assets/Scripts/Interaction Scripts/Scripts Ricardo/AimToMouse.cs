@@ -28,8 +28,8 @@ public class AimToMouse : MonoBehaviour
                 if (Input.GetMouseButtonDown(0)/*Input.GetKey(KeyCode.Mouse0)*/)
                 {
 
-                    menuManager.contextualMenu.GetComponent<ContextualMenu>().MenuType = ContextualMenu.MenuTypeEnum.Object;
-                    menuManager.contextualMenu.GetComponent<ContextualMenu>().objectTypeText.text = menuManager.contextualMenu.GetComponent<ContextualMenu>().MenuType.ToString();
+                    menuManager.contextualMenu.MenuType = ContextualMenu.MenuTypeEnum.Object;
+                    menuManager.contextualMenu.objectTypeText.text = menuManager.contextualMenu.MenuType.ToString();
                     
                     menuManager.OpenContextualMenu();
                 }

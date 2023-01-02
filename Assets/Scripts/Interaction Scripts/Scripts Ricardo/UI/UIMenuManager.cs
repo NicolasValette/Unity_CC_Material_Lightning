@@ -5,7 +5,7 @@ using UnityEngine;
 public class UIMenuManager : MonoBehaviour
 {
     public GameObject gameMenu;
-    public GameObject contextualMenu;
+    public ContextualMenu contextualMenu;
 
     public void OpenGameMenu()
     {
@@ -27,12 +27,13 @@ public class UIMenuManager : MonoBehaviour
     {
         if (gameMenu != null)
         {
-            contextualMenu.SetActive(true);
+            contextualMenu.gameObject.SetActive(true);
+            contextualMenu.CreateListContent();
         }
     }
 
     public void CloseContextualMenu()
     {
-        contextualMenu.SetActive(false);
+        contextualMenu.gameObject.SetActive(false);
     }
 }
