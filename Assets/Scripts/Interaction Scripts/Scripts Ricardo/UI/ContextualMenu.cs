@@ -82,7 +82,7 @@ public class ContextualMenu : MonoBehaviour
 
     public void AssignMaterialToSelectedElement(LinkToMaterial link)
     {
-        SelectedEnvironmentElement.assignedMaterialData(link.LinkedObject);
+        SelectedEnvironmentElement.AssignMaterialToElement(link.LinkedMaterial);
 
 
     }
