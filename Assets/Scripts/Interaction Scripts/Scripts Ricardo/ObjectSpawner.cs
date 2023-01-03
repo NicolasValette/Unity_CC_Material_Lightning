@@ -18,7 +18,12 @@ public class ObjectSpawner : MonoBehaviour
         contextualMenu = FindObjectOfType<ContextualMenu>();
     }
 
-    public OnEn4
+    public void OnEnable()
+    {
+        if (spawnedGameObject == null)
+            transform.GetComponent<MeshRenderer>().enabled = false;
+        else transform.GetComponent<MeshRenderer>().enabled = true;
+    }
 
 
     void AssignOtherColor(ColorData colorData)

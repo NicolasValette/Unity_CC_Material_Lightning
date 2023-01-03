@@ -6,7 +6,7 @@ public class ObjectData : ScriptableObject
 {
     public string Name;
 
-    public enum ObjectTypeEnum { Sitting, LightStand, Table, Detail}
+    public enum ObjectTypeEnum { Sitting, LightStand, Table, Detail, plant}
     public ObjectTypeEnum ObjectType = new ObjectTypeEnum();
 
     public Sprite Icon;

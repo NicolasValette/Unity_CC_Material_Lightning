@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AimToMouse : MonoBehaviour
 {
     public RaycastHit hit;
     public UIMenuManager menuManager;
     public LayerMask layers;
+    public Image HandIcon;
 
     private void Update()
     {

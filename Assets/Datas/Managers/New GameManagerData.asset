@@ -29,3 +29,7 @@ MonoBehaviour:
   MaterialsList:
   - {fileID: 11400000, guid: 0d098ecb62332794a917b5774ded9999, type: 2}
   - {fileID: 11400000, guid: 5f0d3f0519c4b8e4c973418b240bc119, type: 2}
+  - {fileID: 11400000, guid: 441adbbafd730fb4998904e387254015, type: 2}
+  - {fileID: 11400000, guid: 0b515d3329affcd4e9ebd5d960891269, type: 2}
+  - {fileID: 11400000, guid: 517bbeed0ed7af64cac490f3a725f69d, type: 2}
+  - {fileID: 11400000, guid: f11f6d4213f17a14894136c6945bc9a4, type: 2}
