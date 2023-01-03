@@ -84,6 +84,7 @@ public class ContextualMenu : MonoBehaviour
 
     public void AssignMaterialToSelectedElement(LinkToMaterial link)
     {
+        Debug.Log("AssignMaterialToSelectedElement");
         SelectedEnvironmentElement.AssignMaterialToElement(link.LinkedMaterial);
 
 

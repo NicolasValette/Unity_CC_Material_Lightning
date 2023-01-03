@@ -8,7 +8,7 @@ public class AimToMouse : MonoBehaviour
     public RaycastHit hit;
     public UIMenuManager menuManager;
     public LayerMask layers;
-    public Image HandIcon;
+    public Transform HandIcon;
 
     private void Update()
     {
@@ -22,6 +22,8 @@ public class AimToMouse : MonoBehaviour
        
         if (Physics.Raycast(rayToMouse, out hit/*, layers*/))
         {
+        //    HandIcon.transform.position = Vector3.Lerp(HandIcon.transform.position, hit.point, Time.deltaTime * 1f);
+
             if (hit.transform.GetComponent<ObjectSpawner>() == true)
             {
                 menuManager.HighlightedObject = hit.transform.gameObject;
