@@ -11,13 +11,25 @@ public class GameManagerData : ScriptableObject
     public List<ObjectData> ObjectsList = new List<ObjectData>();
 
     [MenuItem("Window/MyEditor/Detect All Datas")]
-    public void detectAllDatas()
+    public void DetectAllDatas()
     {
-        detectAllColorsDatas();
-        detectAllObjectsDatas();
+        InitLists();
+
+        DetectAllColorsDatas();
+        DetectAllObjectsDatas();
+
+        Save();
     }
 
-    public void detectAllColorsDatas()
+    private void InitLists()
+    {
+        if (ColorsList == null)        
+            ColorsList = new List<ColorData>();
+        if (ObjectsList == null)
+            ObjectsList = new List<ObjectData>();
+    }
+
+    public void DetectAllColorsDatas()
     {
         string[] guids = AssetDatabase.FindAssets("t:ObjectData", null);
         foreach (string guid in guids)
@@ -29,7 +41,7 @@ public class GameManagerData : ScriptableObject
             }
         }
     }
-    public void detectAllObjectsDatas()
+    public void DetectAllObjectsDatas()
     {
         string[] guids = AssetDatabase.FindAssets("t:ColorData", null);
         foreach (string guid in guids)
@@ -41,5 +53,11 @@ public class GameManagerData : ScriptableObject
                 ColorsList.Add(asset);
             }
         }
+    }
+
+    public void Save()
+    {
+        EditorUtility.SetDirty(this);
+        AssetDatabase.SaveAssets();
     }
 }

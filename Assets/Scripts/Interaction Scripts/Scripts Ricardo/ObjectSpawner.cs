@@ -11,7 +11,12 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] private GameObject spawnedGameObject;
     [SerializeField] private ColorData assignedColorData;
 
+    [SerializeField] private ContextualMenu contextualMenu;
 
+    private void Start()
+    {
+        contextualMenu = FindObjectOfType<ContextualMenu>();
+    }
 
     void AssignOtherColor(ColorData colorData)
     {

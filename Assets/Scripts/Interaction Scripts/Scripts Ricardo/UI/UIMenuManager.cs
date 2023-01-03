@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class UIMenuManager : MonoBehaviour
 {
     public GameObject gameMenu;
+
     public ContextualMenu contextualMenu;
 
     public void OpenGameMenu()
@@ -23,12 +25,23 @@ public class UIMenuManager : MonoBehaviour
         }
     }
 
-    public void OpenContextualMenu()
+    public void OpenContextualMenu(ObjectSpawner selectedSpawner)
     {
         if (gameMenu != null)
         {
+            contextualMenu.SelectedObjectSpawner = selectedSpawner;
             contextualMenu.gameObject.SetActive(true);
             contextualMenu.CreateListContent();
+        }
+    }
+
+    public void OpenContextualMenu(LightData selectedSpawner)
+    {
+        if (gameMenu != null)
+        {
+        /*    contextualMenu.SelectedObjectSpawner = selectedSpawner;
+            contextualMenu.gameObject.SetActive(true);
+            contextualMenu.CreateListContent();*/
         }
     }
 

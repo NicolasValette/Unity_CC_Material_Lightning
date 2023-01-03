@@ -371,7 +371,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 3
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -522,10 +522,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MenuType: 0
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 11400000, guid: 290ee066229d048428be46e4b6a0986a, type: 2}
   objectTypeText: {fileID: 1355217084}
   ListContent: {fileID: 245932277}
   ContentPrefab: {fileID: 1677387537}
+  SelectedObjectSpawner: {fileID: 0}
 --- !u!114 &367795162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3199,6 +3200,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8710159877783034348, guid: 52021f593dfe3ff489f4ac47f5b827c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52021f593dfe3ff489f4ac47f5b827c0, type: 3}
 --- !u!1 &1674329392
@@ -3348,6 +3353,7 @@ GameObject:
   - component: {fileID: 1677387540}
   - component: {fileID: 1677387539}
   - component: {fileID: 1677387542}
+  - component: {fileID: 1677387543}
   m_Layer: 5
   m_Name: Button Prefab
   m_TagString: Untagged
@@ -3419,7 +3425,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1677387540}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 367795161}
+        m_TargetAssemblyTypeName: ContextualMenu, Assembly-CSharp
+        m_MethodName: AssignObjctToSelectedSpawner
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1677387543}
+          m_ObjectArgumentAssemblyTypeName: LinkToObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1677387540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3478,6 +3496,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &1677387543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677387537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6826cdcde651525478f7a9e6def56007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LinkedObject: {fileID: 0}
 --- !u!1 &1716339321
 GameObject:
   m_ObjectHideFlags: 0
@@ -3897,7 +3928,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091456088}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3948,7 +3979,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091456088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.7366, y: 0.9619, z: -7.216}
+  m_LocalPosition: {x: 5.7366, y: 0.426, z: -7.216}
   m_LocalScale: {x: 1.1667525, y: 1.0590521, z: 1.2632746}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3971,6 +4002,7 @@ MonoBehaviour:
   assignedObject: {fileID: 0}
   spawnedGameObject: {fileID: 0}
   assignedColorData: {fileID: 0}
+  contextualMenu: {fileID: 0}
 --- !u!1001 &2105989645
 PrefabInstance:
   m_ObjectHideFlags: 0

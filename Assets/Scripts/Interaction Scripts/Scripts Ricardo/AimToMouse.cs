@@ -31,7 +31,7 @@ public class AimToMouse : MonoBehaviour
                     menuManager.contextualMenu.MenuType = ContextualMenu.MenuTypeEnum.Object;
                     menuManager.contextualMenu.objectTypeText.text = menuManager.contextualMenu.MenuType.ToString();
                     
-                    menuManager.OpenContextualMenu();
+                    menuManager.OpenContextualMenu(hit.transform.GetComponent<ObjectSpawner>());
                 }
             }
 
@@ -43,7 +43,7 @@ public class AimToMouse : MonoBehaviour
                     menuManager.contextualMenu.GetComponent<ContextualMenu>().MenuType = ContextualMenu.MenuTypeEnum.Light;
                     menuManager.contextualMenu.GetComponent<ContextualMenu>().objectTypeText.text = menuManager.contextualMenu.GetComponent<ContextualMenu>().MenuType.ToString();
 
-                    menuManager.OpenContextualMenu();
+                 //   menuManager.OpenContextualMenu(hit.transform.GetComponent<ToggleLight>());
                 }
             }
             else
