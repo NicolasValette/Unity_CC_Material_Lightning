@@ -11,7 +11,7 @@ public class OpenDoorController : MonoBehaviour
     {
        
     }
-    public void OpenCLoseDoor()
+    public void OpenCloseDoor()
     {
         transform.eulerAngles = new Vector3(0f, 90f, 90f);
     }

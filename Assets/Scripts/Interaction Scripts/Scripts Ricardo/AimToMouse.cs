@@ -22,10 +22,11 @@ public class AimToMouse : MonoBehaviour
         {
             if (hit.transform.GetComponent<ObjectSpawner>() == true)
             {
-            //    Debug.Log(hit.transform.name);
+                menuManager.HighlightedObject = hit.transform.gameObject;
+                hit.transform.GetComponent<MeshRenderer>().enabled = true;
 
                 // open contextual menu
-                if (Input.GetMouseButtonDown(0)/*Input.GetKey(KeyCode.Mouse0)*/)
+                if (Input.GetMouseButtonDown(0))
                 {
 
                     menuManager.contextualMenu.MenuType = ContextualMenu.MenuTypeEnum.Object;
@@ -59,9 +60,22 @@ public class AimToMouse : MonoBehaviour
                     menuManager.OpenContextualMenu(hit.transform.GetComponent<EnvironmentElement>());
                 }
             }
+            else if (hit.transform.GetComponent<OpenDoorController>() == true)
+            {
+                // open contextual menu
+                if (Input.GetMouseButtonDown(0))
+                {
+
+                    hit.transform.GetComponent<OpenDoorController>().OpenCloseDoor();
+                }
+            }
             else
             {
-            
+                if (menuManager.HighlightedObject && menuManager.HighlightedObject.GetComponent<ObjectSpawner>() != null)
+                {
+                    menuManager.HighlightedObject.GetComponent<MeshRenderer>().enabled = false;
+                    menuManager.HighlightedObject = hit.transform.gameObject;
+                }
             }
         }
        

@@ -9,6 +9,9 @@ public class UIMenuManager : MonoBehaviour
 
     public ContextualMenu contextualMenu;
 
+    public GameObject HighlightedObject;
+
+
     public void OpenGameMenu()
     {
         if (gameMenu != null)

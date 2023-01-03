@@ -58,7 +58,9 @@ public class ContextualMenu : MonoBehaviour
 
                 ChoicesList.Add(content);
 
-                content.GetComponent<Image>().material = data.material;
+            //    data.
+
+                content.GetComponent<LinkToMaterial>().rawImage.texture = data.material.mainTexture;
                 content.SetActive(true);
             }
         }

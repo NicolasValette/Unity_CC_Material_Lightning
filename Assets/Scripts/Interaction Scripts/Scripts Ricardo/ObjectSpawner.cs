@@ -18,6 +18,9 @@ public class ObjectSpawner : MonoBehaviour
         contextualMenu = FindObjectOfType<ContextualMenu>();
     }
 
+    public OnEn4
+
+
     void AssignOtherColor(ColorData colorData)
     {
         assignedColorData = colorData;
