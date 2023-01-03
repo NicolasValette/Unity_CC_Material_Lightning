@@ -17,19 +17,37 @@ public class ContextualMenu : MonoBehaviour
 
     public ObjectSpawner SelectedObjectSpawner;
 
-    public void CreateListContent()
+    public List<GameObject> ChoicesList = new List<GameObject>();
+
+
+    public void CreateListContent(ObjectSpawner selectedSpawner)
     {
+        CleanChoices();
         for (int i = 0; i < gameManager.ObjectsList.Count; i++)
         {
-            GameObject content = (GameObject)Instantiate(ContentPrefab);
-            content.transform.parent = ListContent.transform;
-            ObjectData data = gameManager.ObjectsList[i];
+            if (selectedSpawner.ObjectType == gameManager.ObjectsList[i].ObjectType)
+            {
+                GameObject content = (GameObject)Instantiate(ContentPrefab);
+                content.transform.parent = ListContent.transform;
+                ObjectData data = gameManager.ObjectsList[i];
 
-            content.GetComponent<LinkToObject>().LinkedObject = data;
+                content.GetComponent<LinkToObject>().LinkedObject = data;
 
-            content.GetComponent<Image>().sprite = data.Icon;
-            content.SetActive(true);
+                ChoicesList.Add(content);
+
+                content.GetComponent<Image>().sprite = data.Icon;
+                content.SetActive(true);
+            }
         }
+    }
+
+    void CleanChoices()
+    {
+        for (int i = 0; i < ChoicesList.Count; i++)
+        {
+            Destroy(ChoicesList[i]);
+        }
+        ChoicesList.Clear();
     }
 
     public void AssignObjctToSelectedSpawner(LinkToObject linkToObject)

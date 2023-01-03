@@ -31,7 +31,7 @@ public class UIMenuManager : MonoBehaviour
         {
             contextualMenu.SelectedObjectSpawner = selectedSpawner;
             contextualMenu.gameObject.SetActive(true);
-            contextualMenu.CreateListContent();
+            contextualMenu.CreateListContent(selectedSpawner);
         }
     }
 

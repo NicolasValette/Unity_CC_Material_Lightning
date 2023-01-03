@@ -5,7 +5,18 @@ using UnityEngine;
 
 public class CreateDatas : MonoBehaviour
 {
-   
+    [MenuItem("Window/MyEditor/Create New Material Data")]
+    public static void CreateMaterial()
+    {
+        // create a new Color asset
+        MaterialData newData = ScriptableObject.CreateInstance<MaterialData>();
+        // write new asset to the project
+        AssetDatabase.CreateAsset(newData, "Assets/Datas/Materials/New MaterialData.asset");
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+    }
+
+
     [MenuItem("Window/MyEditor/Create New Color Data")]
     public static void CreateColor()
     {

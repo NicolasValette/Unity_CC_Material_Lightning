@@ -13,4 +13,5 @@ public class ObjectData : ScriptableObject
     public GameObject objectPrefab;
     public Vector3 positionOffset = new Vector3();
     public Vector3 rotationOffset = new Vector3();
+    public Vector3 scaleOffset = new Vector3();
 }
