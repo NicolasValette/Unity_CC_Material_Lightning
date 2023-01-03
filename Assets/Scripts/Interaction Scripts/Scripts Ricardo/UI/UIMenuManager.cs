@@ -25,6 +25,17 @@ public class UIMenuManager : MonoBehaviour
         }
     }
 
+    public void OpenContextualMenu(EnvironmentElement element)
+    {
+        if (gameMenu != null)
+        {
+            contextualMenu.SelectedEnvironmentElement = element;
+            contextualMenu.gameObject.SetActive(true);
+            contextualMenu.CreateListContent(element);
+        }
+    }
+
+
     public void OpenContextualMenu(ObjectSpawner selectedSpawner)
     {
         if (gameMenu != null)

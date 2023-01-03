@@ -9,6 +9,7 @@ public class GameManagerData : ScriptableObject
 
     public List<ColorData> ColorsList = new List<ColorData>();
     public List<ObjectData> ObjectsList = new List<ObjectData>();
+    public List<MaterialData> MaterialsList = new List<MaterialData>();
 
     [MenuItem("Window/MyEditor/Detect All Datas")]
     public void DetectAllDatas()
@@ -17,6 +18,7 @@ public class GameManagerData : ScriptableObject
 
         DetectAllColorsDatas();
         DetectAllObjectsDatas();
+        DetectAllMaterialsDatas();
 
         Save();
     }
@@ -41,6 +43,21 @@ public class GameManagerData : ScriptableObject
             }
         }
     }
+
+    public void DetectAllMaterialsDatas()
+    {
+        string[] guids = AssetDatabase.FindAssets("t:MaterialData", null);
+        foreach (string guid in guids)
+        {
+            MaterialData asset = (MaterialData)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guid), typeof(MaterialData));
+
+            if (MaterialsList.Contains(asset) == false)
+            {
+                MaterialsList.Add(asset);
+            }
+        }
+    }
+
     public void DetectAllObjectsDatas()
     {
         string[] guids = AssetDatabase.FindAssets("t:ColorData", null);

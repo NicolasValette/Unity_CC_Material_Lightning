@@ -46,12 +46,22 @@ public class AimToMouse : MonoBehaviour
                  //   menuManager.OpenContextualMenu(hit.transform.GetComponent<ToggleLight>());
                 }
             }
+            else if (hit.transform.GetComponent<EnvironmentElement>() == true)
+            {
+                // open contextual menu
+                if (Input.GetMouseButtonDown(0))
+                {
+                //    Debug.Log("EnvironmentElement");
+                
+                    menuManager.contextualMenu.GetComponent<ContextualMenu>().MenuType = ContextualMenu.MenuTypeEnum.Environment;
+                    menuManager.contextualMenu.GetComponent<ContextualMenu>().objectTypeText.text = menuManager.contextualMenu.GetComponent<ContextualMenu>().MenuType.ToString();
+                                        
+                    menuManager.OpenContextualMenu(hit.transform.GetComponent<EnvironmentElement>());
+                }
+            }
             else
             {
-                // close contextual menu
-            /*    if (Input.GetMouseButtonDown(0)
-                   && hit.transform.gameObject.layer != 5)
-                    menuManager.CloseContextualMenu();*/
+            
             }
         }
        

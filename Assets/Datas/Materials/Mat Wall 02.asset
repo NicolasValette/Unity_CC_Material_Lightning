@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Mat Wall 02
   m_EditorClassIdentifier: 
   Name: 
-  ObjectType: 0
-  material: {fileID: 0}
+  MaterialType: 0
+  material: {fileID: 2100000, guid: 0de0f56525ab4e449800991ed8c5611b, type: 2}

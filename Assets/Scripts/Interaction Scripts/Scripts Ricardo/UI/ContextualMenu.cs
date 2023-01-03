@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ContextualMenu : MonoBehaviour
 {
-    public enum MenuTypeEnum { Object, Light }
+    public enum MenuTypeEnum { Object, Light, Environment }
     public MenuTypeEnum MenuType = new MenuTypeEnum();
 
     public GameManagerData gameManager;
@@ -13,9 +13,11 @@ public class ContextualMenu : MonoBehaviour
     public Text objectTypeText;
 
     public GameObject ListContent;
-    public GameObject ContentPrefab;
+    public GameObject ObjectContentPrefab;
+    public GameObject MaterialContentPrefab;
 
     public ObjectSpawner SelectedObjectSpawner;
+    public EnvironmentElement SelectedEnvironmentElement;
 
     public List<GameObject> ChoicesList = new List<GameObject>();
 
@@ -27,7 +29,7 @@ public class ContextualMenu : MonoBehaviour
         {
             if (selectedSpawner.ObjectType == gameManager.ObjectsList[i].ObjectType)
             {
-                GameObject content = (GameObject)Instantiate(ContentPrefab);
+                GameObject content = (GameObject)Instantiate(ObjectContentPrefab);
                 content.transform.parent = ListContent.transform;
                 ObjectData data = gameManager.ObjectsList[i];
 
@@ -36,6 +38,27 @@ public class ContextualMenu : MonoBehaviour
                 ChoicesList.Add(content);
 
                 content.GetComponent<Image>().sprite = data.Icon;
+                content.SetActive(true);
+            }
+        }
+    }
+
+    public void CreateListContent(EnvironmentElement element)
+    {
+        CleanChoices();
+        for (int i = 0; i < gameManager.MaterialsList.Count; i++)
+        {
+            if (element.MaterialType == gameManager.MaterialsList[i].MaterialType)
+            {
+                GameObject content = (GameObject)Instantiate(MaterialContentPrefab);
+                content.transform.parent = ListContent.transform;
+                MaterialData data = gameManager.MaterialsList[i];
+
+                content.GetComponent<LinkToMaterial>().LinkedMaterial = data;
+
+                ChoicesList.Add(content);
+
+                content.GetComponent<Image>().material = data.material;
                 content.SetActive(true);
             }
         }
@@ -55,5 +78,12 @@ public class ContextualMenu : MonoBehaviour
         SelectedObjectSpawner.AssignOtherObject(linkToObject.LinkedObject);
 
         
+    }
+
+    public void AssignMaterialToSelectedElement(LinkToMaterial link)
+    {
+        SelectedEnvironmentElement.assignedMaterialData(link.LinkedObject);
+
+
     }
 }
