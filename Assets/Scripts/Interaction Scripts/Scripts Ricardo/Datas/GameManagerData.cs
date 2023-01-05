@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 public class GameManagerData : ScriptableObject
@@ -11,6 +13,7 @@ public class GameManagerData : ScriptableObject
     public List<ObjectData> ObjectsList = new List<ObjectData>();
     public List<MaterialData> MaterialsList = new List<MaterialData>();
 
+#if UNITY_EDITOR
     [MenuItem("Window/MyEditor/Detect All Datas")]
     public void DetectAllDatas()
     {
@@ -72,9 +75,11 @@ public class GameManagerData : ScriptableObject
         }
     }
 
+
     public void Save()
     {
         EditorUtility.SetDirty(this);
         AssetDatabase.SaveAssets();
     }
+#endif
 }
