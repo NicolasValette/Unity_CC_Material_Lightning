@@ -25,66 +25,73 @@ public class AimToMouse : MonoBehaviour
        
         if (Physics.Raycast(rayToMouse, out hit/*, layers*/))
         {
-        //    HandIcon.transform.position = Vector3.Lerp(HandIcon.transform.position, hit.point, Time.deltaTime * 1f);
+            //    HandIcon.transform.position = Vector3.Lerp(HandIcon.transform.position, hit.point, Time.deltaTime * 1f);
+            HandleHit();
 
-            if (hit.transform.GetComponent<ObjectSpawner>() == true)
-            {
-                menuManager.HighlightedObject = hit.transform.gameObject;
-            //    hit.transform.GetComponent<MeshRenderer>().enabled = true;
 
-                // open contextual menu
-                if (Input.GetMouseButtonDown(0))
-                {
-
-                    menuManager.contextualMenu.MenuType = ContextualMenu.MenuTypeEnum.Object;
-                    menuManager.contextualMenu.objectTypeText.text = menuManager.contextualMenu.MenuType.ToString();
-                    
-                    menuManager.OpenContextualMenu(hit.transform.GetComponent<ObjectSpawner>());
-                }
-            }
-
-            else if (hit.transform.GetComponent<ToggleLight>() == true)
-            {
-                // open contextual menu
-                if (Input.GetMouseButtonDown(0))
-                {
-                    menuManager.contextualMenu.GetComponent<ContextualMenu>().MenuType = ContextualMenu.MenuTypeEnum.Light;
-                    menuManager.contextualMenu.GetComponent<ContextualMenu>().objectTypeText.text = menuManager.contextualMenu.GetComponent<ContextualMenu>().MenuType.ToString();
-
-                 //   menuManager.OpenContextualMenu(hit.transform.GetComponent<ToggleLight>());
-                }
-            }
-            else if (hit.transform.GetComponent<EnvironmentElement>() == true)
-            {
-                // open contextual menu
-                if (Input.GetMouseButtonDown(0))
-                {
-                //    Debug.Log("EnvironmentElement");
-                
-                    menuManager.contextualMenu.GetComponent<ContextualMenu>().MenuType = ContextualMenu.MenuTypeEnum.Environment;
-                    menuManager.contextualMenu.GetComponent<ContextualMenu>().objectTypeText.text = menuManager.contextualMenu.GetComponent<ContextualMenu>().MenuType.ToString();
-                                        
-                    menuManager.OpenContextualMenu(hit.transform.GetComponent<EnvironmentElement>());
-                }
-            }
-            else if (hit.transform.GetComponent<OpenDoorController>() == true)
-            {
-                // open contextual menu
-                if (Input.GetMouseButtonDown(0))
-                {
-
-                    hit.transform.GetComponent<OpenDoorController>().OpenCloseDoor();
-                }
-            }
-            else
-            {
-                if (menuManager.HighlightedObject && menuManager.HighlightedObject.GetComponent<ObjectSpawner>() != null)
-                {
-                    menuManager.HighlightedObject.GetComponent<MeshRenderer>().enabled = false;
-                    menuManager.HighlightedObject = hit.transform.gameObject;
-                }
-            }
         }
        
     }
+
+    void HandleHit() {
+        if (hit.transform.GetComponent<ObjectSpawner>() == true)
+        {
+            menuManager.HighlightedObject = hit.transform.gameObject;
+            //    hit.transform.GetComponent<MeshRenderer>().enabled = true;
+
+            // open contextual menu
+            if (Input.GetMouseButtonDown(0))
+            {
+
+                menuManager.contextualMenu.MenuType = ContextualMenu.MenuTypeEnum.Object;
+                menuManager.contextualMenu.objectTypeText.text = menuManager.contextualMenu.MenuType.ToString();
+
+                menuManager.OpenContextualMenu(hit.transform.GetComponent<ObjectSpawner>());
+            }
+        }
+
+        else if (hit.transform.GetComponent<ToggleLight>() == true)
+        {
+            // open contextual menu
+            if (Input.GetMouseButtonDown(0))
+            {
+                menuManager.contextualMenu.GetComponent<ContextualMenu>().MenuType = ContextualMenu.MenuTypeEnum.Light;
+                menuManager.contextualMenu.GetComponent<ContextualMenu>().objectTypeText.text = menuManager.contextualMenu.GetComponent<ContextualMenu>().MenuType.ToString();
+
+                //   menuManager.OpenContextualMenu(hit.transform.GetComponent<ToggleLight>());
+            }
+        }
+        else if (hit.transform.GetComponent<EnvironmentElement>() == true)
+        {
+            // open contextual menu
+            if (Input.GetMouseButtonDown(0))
+            {
+                //    Debug.Log("EnvironmentElement");
+
+                menuManager.contextualMenu.GetComponent<ContextualMenu>().MenuType = ContextualMenu.MenuTypeEnum.Environment;
+                menuManager.contextualMenu.GetComponent<ContextualMenu>().objectTypeText.text = menuManager.contextualMenu.GetComponent<ContextualMenu>().MenuType.ToString();
+
+                menuManager.OpenContextualMenu(hit.transform.GetComponent<EnvironmentElement>());
+            }
+        }
+        else if (hit.transform.GetComponent<OpenDoorController>() == true)
+        {
+            // open contextual menu
+            if (Input.GetMouseButtonDown(0))
+            {
+
+                hit.transform.GetComponent<OpenDoorController>().OpenCloseDoor();
+            }
+        }
+        else
+        {
+            if (menuManager.HighlightedObject && menuManager.HighlightedObject.GetComponent<ObjectSpawner>() != null)
+            {
+                menuManager.HighlightedObject.GetComponent<MeshRenderer>().enabled = false;
+                menuManager.HighlightedObject = hit.transform.gameObject;
+            }
+        }
+    }
+
+
 }

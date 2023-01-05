@@ -11,6 +11,7 @@ public class ToggleLight : MonoBehaviour
         for (int i = 0; i < LightsList.Count; i++)
         {
             LightsList[i].enabled = !LightsList[i].enabled;
+         //   LightsList[i].GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
         }
     }
 
@@ -19,6 +20,7 @@ public class ToggleLight : MonoBehaviour
         for (int i = 0; i < LightsList.Count; i++)
         {
             LightsList[i].color = colorData.color;
+         //   LightsList[i].GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
         }
     }
 }
