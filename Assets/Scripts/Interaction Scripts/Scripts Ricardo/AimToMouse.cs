@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class AimToMouse : MonoBehaviour
@@ -12,7 +13,9 @@ public class AimToMouse : MonoBehaviour
 
     private void Update()
     {
-        CastRayToMouse();
+    //    if (menuManager.contextualMenu.gameObject.activeInHierarchy == false)
+            if (EventSystem.current.IsPointerOverGameObject() == false)
+                CastRayToMouse();
     }
 
     private void CastRayToMouse()
@@ -27,7 +30,7 @@ public class AimToMouse : MonoBehaviour
             if (hit.transform.GetComponent<ObjectSpawner>() == true)
             {
                 menuManager.HighlightedObject = hit.transform.gameObject;
-                hit.transform.GetComponent<MeshRenderer>().enabled = true;
+            //    hit.transform.GetComponent<MeshRenderer>().enabled = true;
 
                 // open contextual menu
                 if (Input.GetMouseButtonDown(0))
