@@ -100,7 +100,6 @@ public class ContextualMenu : MonoBehaviour
     {
         SelectedEnvironmentElement.AssignMaterialToElement(link.LinkedMaterial);
 
-
     }
 
     public void RemoveAssignedObject()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static ObjectData;
 
-public class ObjectSpawner : MonoBehaviour
+public class ObjectSpawner : MonoBehaviour, UsableObjectInterface
 {
     public ObjectData.ObjectTypeEnum ObjectType = new ObjectData.ObjectTypeEnum();
 
@@ -29,6 +29,23 @@ public class ObjectSpawner : MonoBehaviour
         else transform.GetComponent<MeshRenderer>().enabled = true;
     }
 
+    void UseObject()
+    {
+        
+      /*      menuManager.HighlightedObject = hit.transform.gameObject;
+            //    hit.transform.GetComponent<MeshRenderer>().enabled = true;
+
+            // open contextual menu
+            if (Input.GetMouseButtonDown(0))
+            {
+
+                menuManager.contextualMenu.MenuType = ContextualMenu.MenuTypeEnum.Object;
+                menuManager.contextualMenu.objectTypeText.text = menuManager.contextualMenu.MenuType.ToString();
+
+                menuManager.OpenContextualMenu(hit.transform.GetComponent<ObjectSpawner>());
+            }
+        */
+    }
 
     void AssignOtherColor(ColorData colorData)
     {
