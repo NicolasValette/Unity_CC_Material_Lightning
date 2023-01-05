@@ -46,12 +46,16 @@ public class SFPSC_PlayerMovement : MonoBehaviour
     private SFPSC_WallRun wallRun;
     private SFPSC_GrapplingHook grapplingHook;
 
+    public UIMenuManager menuManager;
+
     private void Start()
     {
         rb = this.GetComponent<Rigidbody>();
 
         TryGetWallRun();
         TryGetGrapplingHook();
+
+        menuManager = FindObjectOfType<UIMenuManager>();
     }
 
     public void TryGetWallRun()
@@ -90,7 +94,7 @@ public class SFPSC_PlayerMovement : MonoBehaviour
         // Clamping speed
         rb.velocity = ClampMag(rb.velocity, maximumPlayerSpeed);
 
-        if (!enableMovement)
+        if (!enableMovement || menuManager.contextualMenu.gameObject.activeInHierarchy == true)
             return;
         inputForce = (transform.forward * vInput + transform.right * hInput).normalized * (Input.GetKey(SFPSC_KeyManager.Run) ? runSpeed : walkSpeed);
 

@@ -53,22 +53,31 @@ public class SFPSC_FPSCamera : MonoBehaviour
     private float rotX = 0.0f, rotY = 0.0f;
     [HideInInspector]
     public float rotZ = 0.0f;
+
+    public UIMenuManager menuManager;
+
+
     private void Update()
     {
-        // Mouse input
-        mouseX = Input.GetAxis("Mouse X") * sensitivity;
-        mouseY = Input.GetAxis("Mouse Y") * sensitivity;
+        if (menuManager.contextualMenu.gameObject.activeInHierarchy == false)
+        {
+            // Mouse input
+            mouseX = Input.GetAxis("Mouse X") * sensitivity;
+            mouseY = Input.GetAxis("Mouse Y") * sensitivity;
 
-        // Calculations
-        rotX -= mouseY;
-        rotX = Mathf.Clamp(rotX, maxDownAngle, maxUpAngle);
-        rotY += mouseX;
+            // Calculations
+            rotX -= mouseY;
+            rotX = Mathf.Clamp(rotX, maxDownAngle, maxUpAngle);
+            rotY += mouseX;
 
-        // Placing values
-        transform.localRotation = Quaternion.Euler(rotX, rotY, rotZ);
-        player.Rotate(Vector3.up * mouseX);
-        transform.position = CameraPosition.position;
+            // Placing values
+            transform.localRotation = Quaternion.Euler(rotX, rotY, rotZ);
+            player.Rotate(Vector3.up * mouseX);
+            transform.position = CameraPosition.position;
+        }
     }
+
+    
 
     public void Shake(float magnitude, float duration)
     {

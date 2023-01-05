@@ -21,9 +21,13 @@ public class ContextualMenu : MonoBehaviour
 
     public List<GameObject> ChoicesList = new List<GameObject>();
 
+    public GameObject RemoveButton;
+
 
     public void CreateListContent(ObjectSpawner selectedSpawner)
     {
+        ManageRemoveButton();
+
         CleanChoices();
         for (int i = 0; i < gameManager.ObjectsList.Count; i++)
         {
@@ -43,8 +47,18 @@ public class ContextualMenu : MonoBehaviour
         }
     }
 
+    private void ManageRemoveButton()
+    {
+        if (SelectedObjectSpawner != null && SelectedObjectSpawner.assignedObject != null)
+            RemoveButton.SetActive(true);
+        else if(SelectedObjectSpawner != null && SelectedObjectSpawner.assignedObject == null)
+            RemoveButton.SetActive(false);
+    }
+
     public void CreateListContent(EnvironmentElement element)
     {
+        RemoveButton.SetActive(false);
+
         CleanChoices();
         for (int i = 0; i < gameManager.MaterialsList.Count; i++)
         {
@@ -78,8 +92,8 @@ public class ContextualMenu : MonoBehaviour
     public void AssignObjctToSelectedSpawner(LinkToObject linkToObject)
     {
         SelectedObjectSpawner.AssignOtherObject(linkToObject.LinkedObject);
+        RemoveButton.SetActive(true);
 
-        
     }
 
     public void AssignMaterialToSelectedElement(LinkToMaterial link)
@@ -87,5 +101,10 @@ public class ContextualMenu : MonoBehaviour
         SelectedEnvironmentElement.AssignMaterialToElement(link.LinkedMaterial);
 
 
+    }
+
+    public void RemoveAssignedObject()
+    {
+        SelectedObjectSpawner.RemoveAssignedObject();
     }
 }

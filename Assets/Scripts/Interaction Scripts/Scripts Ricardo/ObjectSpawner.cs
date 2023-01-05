@@ -7,11 +7,15 @@ public class ObjectSpawner : MonoBehaviour
 {
     public ObjectData.ObjectTypeEnum ObjectType = new ObjectData.ObjectTypeEnum();
 
-    [SerializeField] private ObjectData assignedObject;
+    [SerializeField] public ObjectData assignedObject;
     [SerializeField] private GameObject spawnedGameObject;
     [SerializeField] private ColorData assignedColorData;
 
     [SerializeField] private ContextualMenu contextualMenu;
+
+    public List<ObjectSpawner> SpawnersGroup = new List<ObjectSpawner>();
+
+    public GameObject PlaceholderIcon;
 
     private void Start()
     {
@@ -38,21 +42,109 @@ public class ObjectSpawner : MonoBehaviour
 
     }
 
+    public void AssignOtherObjectsToSpawnerGroup(ObjectData objectData)
+    {
+        if (SpawnersGroup.Contains(this) == false)        
+            AssignObject(objectData);
+
+        for (int i = 0; i < SpawnersGroup.Count; i++)
+        {
+            SpawnersGroup[i].AssignObject(objectData);            
+        }
+    }
+
     public void AssignOtherObject(ObjectData objectData)
     {
+        if (SpawnersGroup.Count == 0)
+        {
+            AssignObject(objectData);
+        }
+        else AssignOtherObjectsToSpawnerGroup(objectData);
+    }
+    public void AssignObject(ObjectData objectData)
+    {            
         assignedObject = objectData;
-        DestroyPreviousSpawnedGameObject();
+        DestroyPreviousSpawnedGameObject();           
         SpawnObjectPrefab(objectData.objectPrefab);
+
+        ApplyOffsets();
     }
 
     void SpawnObjectPrefab(GameObject objectToSpawn)
     {
         spawnedGameObject = (GameObject)Instantiate(objectToSpawn, transform.position, transform.rotation);
+        HideIcon();
+    }
+
+    public void RemoveAssignedObject()
+    {
+        if (SpawnersGroup.Count == 0)
+        {
+            assignedObject = null;
+            DestroyPreviousSpawnedGameObject();
+        }
+        else
+        {
+            RemoveGroupObject();
+        }
+    }
+
+    public void RemoveGroupObject()
+    {
+        if (SpawnersGroup.Contains(this) == false)
+            RemoveObject();
+
+        for (int i = 0; i < SpawnersGroup.Count; i++)
+        {
+            SpawnersGroup[i].RemoveObject();
+        }
+    }
+
+    public void RemoveObject()
+    {
+        assignedObject = null;
+        DestroyPreviousSpawnedGameObject();
     }
 
     void DestroyPreviousSpawnedGameObject()
     {
         if (spawnedGameObject != null)
             Destroy(spawnedGameObject);
+
+        ShowIcon();
+    }
+
+    void ApplyOffsets()
+    {
+        spawnedGameObject.transform.position = spawnedGameObject.transform.position + assignedObject.positionOffset;
+
+        spawnedGameObject.transform.rotation =
+            new Quaternion(spawnedGameObject.transform.rotation.x + assignedObject.rotationOffset.x,
+             spawnedGameObject.transform.rotation.y + assignedObject.rotationOffset.y,
+              spawnedGameObject.transform.rotation.z + assignedObject.rotationOffset.z,
+               spawnedGameObject.transform.rotation.w);
+
+        float x = assignedObject.scaleOffset.x;
+        float y = assignedObject.scaleOffset.y;
+        float z = assignedObject.scaleOffset.z;
+
+        if (x == 0) x = 1;
+        if (y == 0) y = 1;
+        if (z == 0) z = 1;
+
+        spawnedGameObject.transform.localScale =
+            new Vector3(spawnedGameObject.transform.localScale.x * x,
+             spawnedGameObject.transform.localScale.y * y,
+             spawnedGameObject.transform.localScale.z * z);
+    }
+
+    void HideIcon()
+    {
+        PlaceholderIcon.SetActive(false);
+    }
+
+    void ShowIcon()
+    {
+        PlaceholderIcon.SetActive(true);
     }
 }

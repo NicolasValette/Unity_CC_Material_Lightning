@@ -116,6 +116,8 @@ MonoBehaviour:
   spawnedGameObject: {fileID: 0}
   assignedColorData: {fileID: 0}
   contextualMenu: {fileID: 0}
+  SpawnersGroup: []
+  PlaceholderIcon: {fileID: 4626236520506408763}
 --- !u!1 &4626236520506408763
 GameObject:
   m_ObjectHideFlags: 0

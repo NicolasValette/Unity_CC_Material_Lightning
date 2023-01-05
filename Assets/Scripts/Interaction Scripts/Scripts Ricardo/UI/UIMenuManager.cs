@@ -35,6 +35,8 @@ public class UIMenuManager : MonoBehaviour
             contextualMenu.SelectedEnvironmentElement = element;
             contextualMenu.gameObject.SetActive(true);
             contextualMenu.CreateListContent(element);
+
+            UnlockMouse();
         }
     }
 
@@ -46,6 +48,8 @@ public class UIMenuManager : MonoBehaviour
             contextualMenu.SelectedObjectSpawner = selectedSpawner;
             contextualMenu.gameObject.SetActive(true);
             contextualMenu.CreateListContent(selectedSpawner);
+
+            UnlockMouse();
         }
     }
 
@@ -53,14 +57,29 @@ public class UIMenuManager : MonoBehaviour
     {
         if (gameMenu != null)
         {
-        /*    contextualMenu.SelectedObjectSpawner = selectedSpawner;
-            contextualMenu.gameObject.SetActive(true);
-            contextualMenu.CreateListContent();*/
+            /*    contextualMenu.SelectedObjectSpawner = selectedSpawner;
+                contextualMenu.gameObject.SetActive(true);
+                contextualMenu.CreateListContent();*/
+
+            UnlockMouse();
         }
     }
 
     public void CloseContextualMenu()
     {
         contextualMenu.gameObject.SetActive(false);
+
+        LockMouse();
+    }
+
+    void UnlockMouse()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
+    void LockMouse()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
