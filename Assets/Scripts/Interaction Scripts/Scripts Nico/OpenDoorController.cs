@@ -15,12 +15,12 @@ public class OpenDoorController : MonoBehaviour
     {
         if (_isOpen)
         {
-            transform.parent.eulerAngles = new Vector3(0f, -90f, 0);
+            transform.parent.Rotate(0f, -90f, 0f);
             _isOpen = false;
         }
         else
         {
-            transform.parent.eulerAngles = new Vector3(0f, 90f, 0);
+            transform.parent.Rotate(0f, 90f, 0f);
             _isOpen = true;
         }
     }
