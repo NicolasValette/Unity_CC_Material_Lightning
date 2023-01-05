@@ -784,12 +784,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81046429}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -960, y: -540, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 516416944}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &95106246
@@ -2333,7 +2333,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4635408903492475059, guid: b68bc1cc142c27c4bb859f31cd22de22, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4635408903492475059, guid: b68bc1cc142c27c4bb859f31cd22de22, type: 3}
       propertyPath: m_LocalScale.x
@@ -2923,8 +2923,9 @@ Transform:
   - {fileID: 1467637723}
   - {fileID: 317085681}
   - {fileID: 1084439161}
+  - {fileID: 81046432}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &516436630 stripped
 GameObject:
@@ -6207,7 +6208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4830727256089507152, guid: 6b07df9c16be42649acd312357689711, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4830727256089507152, guid: 6b07df9c16be42649acd312357689711, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6313,7 +6314,7 @@ Transform:
   - {fileID: 1774774580}
   - {fileID: 1051336332}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1051336332 stripped
 Transform:
@@ -6453,7 +6454,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Remove
 --- !u!222 &1074191810
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7699,7 +7700,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 21.956, y: 89.175, z: 0}
 --- !u!114 &1257284410
 MonoBehaviour:
@@ -9394,7 +9395,7 @@ Transform:
   - {fileID: 2068475044}
   - {fileID: 433209673}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1546073991
 PrefabInstance:
@@ -10030,6 +10031,7 @@ MonoBehaviour:
   contextualMenu: {fileID: 0}
   SpawnersGroup: []
   PlaceholderIcon: {fileID: 0}
+  menuManager: {fileID: 0}
 --- !u!65 &1624551507
 BoxCollider:
   m_ObjectHideFlags: 0

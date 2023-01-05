@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface UsableObjectInterface
 {
-    public void UseObject()
+    public void UseObject(GameObject hitObj)
     {
 
     }

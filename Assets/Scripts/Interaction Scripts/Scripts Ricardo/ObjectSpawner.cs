@@ -8,7 +8,7 @@ public class ObjectSpawner : MonoBehaviour, UsableObjectInterface
     public ObjectData.ObjectTypeEnum ObjectType = new ObjectData.ObjectTypeEnum();
 
     [SerializeField] public ObjectData assignedObject;
-    [SerializeField] private GameObject spawnedGameObject;
+    [SerializeField] public GameObject spawnedGameObject;
     [SerializeField] private ColorData assignedColorData;
 
     [SerializeField] private ContextualMenu contextualMenu;
@@ -16,6 +16,7 @@ public class ObjectSpawner : MonoBehaviour, UsableObjectInterface
     public List<ObjectSpawner> SpawnersGroup = new List<ObjectSpawner>();
 
     public GameObject PlaceholderIcon;
+    public UIMenuManager menuManager;
 
     private void Start()
     {
@@ -27,24 +28,25 @@ public class ObjectSpawner : MonoBehaviour, UsableObjectInterface
         if (spawnedGameObject == null)
             transform.GetComponent<MeshRenderer>().enabled = false;
         else transform.GetComponent<MeshRenderer>().enabled = true;
+        if (menuManager == null) menuManager = FindObjectOfType<UIMenuManager>();
     }
 
-    void UseObject()
+    public void UseObject(GameObject hitObject)
     {
+        if (menuManager == null) menuManager = FindObjectOfType<UIMenuManager>();
+        menuManager.HighlightedObject = hitObject.transform.gameObject;
+        //    hit.transform.GetComponent<MeshRenderer>().enabled = true;
+
+        // open contextual menu
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            menuManager.contextualMenu.MenuType = ContextualMenu.MenuTypeEnum.Object;
+            menuManager.contextualMenu.objectTypeText.text = menuManager.contextualMenu.MenuType.ToString();
+
+            menuManager.OpenContextualMenu(hitObject.transform.GetComponent<ObjectSpawner>());
+        }
         
-      /*      menuManager.HighlightedObject = hit.transform.gameObject;
-            //    hit.transform.GetComponent<MeshRenderer>().enabled = true;
-
-            // open contextual menu
-            if (Input.GetMouseButtonDown(0))
-            {
-
-                menuManager.contextualMenu.MenuType = ContextualMenu.MenuTypeEnum.Object;
-                menuManager.contextualMenu.objectTypeText.text = menuManager.contextualMenu.MenuType.ToString();
-
-                menuManager.OpenContextualMenu(hit.transform.GetComponent<ObjectSpawner>());
-            }
-        */
     }
 
     void AssignOtherColor(ColorData colorData)
@@ -82,16 +84,22 @@ public class ObjectSpawner : MonoBehaviour, UsableObjectInterface
     {            
         assignedObject = objectData;
         DestroyPreviousSpawnedGameObject();           
-        SpawnObjectPrefab(objectData.objectPrefab);
+     //   SpawnObjectPrefab(objectData.objectPrefab);
+        spawnedGameObject = (GameObject)Instantiate(objectData.objectPrefab, transform.position, transform.rotation);
+        HideIcon();
+        if (objectData.ObjectType == ObjectTypeEnum.Light)
+        {
+            menuManager.LightsList.Add(spawnedGameObject.GetComponentInChildren<InteractableLight>());
+        }
 
         ApplyOffsets();
     }
 
-    void SpawnObjectPrefab(GameObject objectToSpawn)
+  /*  void SpawnObjectPrefab(GameObject objectToSpawn)
     {
         spawnedGameObject = (GameObject)Instantiate(objectToSpawn, transform.position, transform.rotation);
         HideIcon();
-    }
+    }*/
 
     public void RemoveAssignedObject()
     {

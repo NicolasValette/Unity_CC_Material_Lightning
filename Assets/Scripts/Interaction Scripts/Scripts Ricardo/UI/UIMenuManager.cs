@@ -11,6 +11,7 @@ public class UIMenuManager : MonoBehaviour
 
     public GameObject HighlightedObject;
 
+    public List<InteractableLight> LightsList = new List<InteractableLight>();
 
     public void OpenGameMenu()
     {

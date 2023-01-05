@@ -25,18 +25,16 @@ public class AimToMouse : MonoBehaviour
        
         if (Physics.Raycast(rayToMouse, out hit/*, layers*/))
         {
-            //    HandIcon.transform.position = Vector3.Lerp(HandIcon.transform.position, hit.point, Time.deltaTime * 1f);
             HandleHit();
-
-
-        }
-       
+        }       
     }
 
     void HandleHit() {
-        if (hit.transform.GetComponent<ObjectSpawner>() == true)
+        if (hit.transform.GetComponent<UsableObjectInterface>() != null)
         {
-            menuManager.HighlightedObject = hit.transform.gameObject;
+            hit.transform.GetComponent<UsableObjectInterface>().UseObject(hit.transform.gameObject);
+
+        /*    menuManager.HighlightedObject = hit.transform.gameObject;
             //    hit.transform.GetComponent<MeshRenderer>().enabled = true;
 
             // open contextual menu
@@ -47,7 +45,7 @@ public class AimToMouse : MonoBehaviour
                 menuManager.contextualMenu.objectTypeText.text = menuManager.contextualMenu.MenuType.ToString();
 
                 menuManager.OpenContextualMenu(hit.transform.GetComponent<ObjectSpawner>());
-            }
+            }*/
         }
 
         else if (hit.transform.GetComponent<ToggleLight>() == true)
