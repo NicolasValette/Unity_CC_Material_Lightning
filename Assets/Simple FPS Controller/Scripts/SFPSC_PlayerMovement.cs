@@ -94,7 +94,9 @@ public class SFPSC_PlayerMovement : MonoBehaviour
         // Clamping speed
         rb.velocity = ClampMag(rb.velocity, maximumPlayerSpeed);
 
-        if (!enableMovement || menuManager.contextualMenu.gameObject.activeInHierarchy == true)
+        if (!enableMovement 
+            || menuManager.contextualMenu.gameObject.activeInHierarchy == true 
+            || menuManager.PickColorMenu.gameObject.activeInHierarchy == true)
             return;
         inputForce = (transform.forward * vInput + transform.right * hInput).normalized * (Input.GetKey(SFPSC_KeyManager.Run) ? runSpeed : walkSpeed);
 

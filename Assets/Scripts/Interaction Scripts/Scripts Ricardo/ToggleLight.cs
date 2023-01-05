@@ -15,11 +15,7 @@ public class ToggleLight : MonoBehaviour, UsableObjectInterface
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("test lights");
-
             ToogleLights();
-
-            //   if (transform.GetComponent<rend>) ;
         }
 
     }
@@ -35,12 +31,5 @@ public class ToggleLight : MonoBehaviour, UsableObjectInterface
         }
     }
 
-    public void ChangeLightColor(ColorData colorData)
-    {
-        for (int i = 0; i < menuManager.LightsList.Count; i++)
-        {
-            menuManager.LightsList[i].GetComponent<Light>().color = colorData.color;
-            //   LightsList[i].EmissionRenderer.material.DisableKeyword("_EMISSION");
-        }
-    }
+    
 }

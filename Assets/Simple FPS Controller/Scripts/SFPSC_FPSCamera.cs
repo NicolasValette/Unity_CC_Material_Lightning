@@ -59,7 +59,8 @@ public class SFPSC_FPSCamera : MonoBehaviour
 
     private void Update()
     {
-        if (menuManager.contextualMenu.gameObject.activeInHierarchy == false)
+        if (menuManager.contextualMenu.gameObject.activeInHierarchy == false
+            && menuManager.PickColorMenu.gameObject.activeInHierarchy == false)
         {
             // Mouse input
             mouseX = Input.GetAxis("Mouse X") * sensitivity;

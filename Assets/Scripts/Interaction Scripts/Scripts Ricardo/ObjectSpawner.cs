@@ -38,14 +38,14 @@ public class ObjectSpawner : MonoBehaviour, UsableObjectInterface
         //    hit.transform.GetComponent<MeshRenderer>().enabled = true;
 
         // open contextual menu
-        if (Input.GetMouseButtonDown(0))
-        {
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
 
             menuManager.contextualMenu.MenuType = ContextualMenu.MenuTypeEnum.Object;
             menuManager.contextualMenu.objectTypeText.text = menuManager.contextualMenu.MenuType.ToString();
 
             menuManager.OpenContextualMenu(hitObject.transform.GetComponent<ObjectSpawner>());
-        }
+    //    }
         
     }
 

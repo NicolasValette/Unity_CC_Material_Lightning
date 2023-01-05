@@ -11,6 +11,11 @@ public class AimToMouse : MonoBehaviour
     public LayerMask layers;
     public Transform HandIcon;
 
+    private void OnEnable()
+    {
+        LockMouse();
+    }
+
     private void Update()
     {
     //    if (menuManager.contextualMenu.gameObject.activeInHierarchy == false)
@@ -32,8 +37,10 @@ public class AimToMouse : MonoBehaviour
     void HandleHit() {
         if (hit.transform.GetComponent<UsableObjectInterface>() != null)
         {
-            hit.transform.GetComponent<UsableObjectInterface>().UseObject(hit.transform.gameObject);
-
+            if (Input.GetMouseButtonDown(0))
+            {
+                hit.transform.GetComponent<UsableObjectInterface>().UseObject(hit.transform.gameObject);
+            }
         /*    menuManager.HighlightedObject = hit.transform.gameObject;
             //    hit.transform.GetComponent<MeshRenderer>().enabled = true;
 
@@ -91,5 +98,9 @@ public class AimToMouse : MonoBehaviour
         }
     }
 
-
+    void LockMouse()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 }

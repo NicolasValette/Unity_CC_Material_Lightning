@@ -6,12 +6,21 @@ using UnityEngine.Rendering.Universal;
 public class UIMenuManager : MonoBehaviour
 {
     public GameObject gameMenu;
+    public FlexibleColorPicker PickColorMenu;
 
     public ContextualMenu contextualMenu;
 
     public GameObject HighlightedObject;
 
     public List<InteractableLight> LightsList = new List<InteractableLight>();
+
+
+    public void OnEnable()
+    {
+        if (PickColorMenu == null)
+            PickColorMenu = FindObjectOfType<FlexibleColorPicker>();
+
+    }
 
     public void OpenGameMenu()
     {
@@ -71,6 +80,41 @@ public class UIMenuManager : MonoBehaviour
         contextualMenu.gameObject.SetActive(false);
 
         LockMouse();
+    }
+
+    public void OpenPickColor()
+    {
+        PickColorMenu.gameObject.SetActive(true);
+
+        UnlockMouse();
+    }
+
+    public void ClosePickColor()
+    {
+        PickColorMenu.gameObject.SetActive(false);
+
+        ChangeLightColor();
+        LockMouse();
+    }
+    /*
+    private void Update()
+    {
+        if (PickColorMenu == null) PickColorMenu = FindObjectOfType<FlexibleColorPicker>();
+        if (PickColorMenu.gameObject.activeInHierarchy)
+        {
+            ChangeLightColor();
+        }
+    }*/
+
+    public void ChangeLightColor()
+    {
+        Color color = PickColorMenu.GetColorFullAlpha();
+
+        for (int i = 0; i < LightsList.Count; i++)
+        {
+            LightsList[i].GetComponent<Light>().color = color;
+        //    LightsList[i].EmissionRenderer.material.DisableKeyword("_EMISSION");
+        }
     }
 
     void UnlockMouse()

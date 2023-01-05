@@ -151,18 +151,27 @@ public class FlexibleColorPicker : MonoBehaviour {
     }
     private AdvancedSettings avs => advancedSettings;
 
+    public UIMenuManager menuManager;
+
+     public void ChangeLightColor()
+    {
+        Color color = GetColorFullAlpha();
+
+        for (int i = 0; i < menuManager.LightsList.Count; i++)
+        {
+            menuManager.LightsList[i].GetComponent<Light>().color = color;
+            //    LightsList[i].EmissionRenderer.material.DisableKeyword("_EMISSION");
+        }
+    }
 
 
 
+/*----------------------------------------------------------
+* ------------------- MAIN COLOR GET/SET -------------------
+* ----------------------------------------------------------
+*/
 
-
-
-    /*----------------------------------------------------------
-    * ------------------- MAIN COLOR GET/SET -------------------
-    * ----------------------------------------------------------
-    */
-
-    public Color color {
+public Color color {
         /* if called before init in Start(), the color state
          * is equivalent to the starting color parameter.
          */
@@ -265,6 +274,9 @@ public class FlexibleColorPicker : MonoBehaviour {
             SeperateMaterials();
             materialsSeperated = true;
         }
+
+        if (menuManager.LightsList.Count > 0)
+            ChangeLightColor();
     }
 
     /// <summary>
@@ -351,7 +363,7 @@ public class FlexibleColorPicker : MonoBehaviour {
     }
 
 
-
+    
 
 
 
@@ -365,7 +377,7 @@ public class FlexibleColorPicker : MonoBehaviour {
     * one or two values changed. This is the core functionality of 
     * the picking images and the entire color picker script.
     */
-    
+
     /// <summary>
     /// Shift the FCP color by a small amount
     /// </summary>
@@ -1165,4 +1177,7 @@ public class FlexibleColorPicker : MonoBehaviour {
             return new BufferedColor(toReturn, bufferedHue, bufferedSaturation);
         }
     }
+
+
 }
+
