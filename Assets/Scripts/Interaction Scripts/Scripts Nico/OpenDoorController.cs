@@ -16,7 +16,6 @@ public class OpenDoorController : MonoBehaviour
         if (_isOpen)
         {
             transform.parent.Rotate(0f, -90f, 0f);
-
             _isOpen = false;
         }
         else
