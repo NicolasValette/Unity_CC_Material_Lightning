@@ -3390,7 +3390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &533669761
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3462,7 +3462,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533669760}
   m_LocalRotation: {x: -0, y: -0.3971125, z: -0, w: 0.91776997}
-  m_LocalPosition: {x: -1.35, y: 2.3247278, z: 16.89}
+  m_LocalPosition: {x: 1.85, y: 2.3247278, z: 20.25}
   m_LocalScale: {x: 0.20000002, y: 0.2, z: 0.20000002}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11987,7 +11987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1978519245
 Transform:
   m_ObjectHideFlags: 0
@@ -12513,11 +12513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6581155398559939030, guid: ab4dd1616f317b84ebc033453a7f03c3, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 1.0848014e+27
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6581155398559939030, guid: ab4dd1616f317b84ebc033453a7f03c3, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 1.02e-43
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6581155398559939030, guid: ab4dd1616f317b84ebc033453a7f03c3, type: 3}
       propertyPath: m_BoundingSphereOverride.y
