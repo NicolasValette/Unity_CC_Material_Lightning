@@ -39,7 +39,6 @@ public class AimToMouse : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log(hit.transform.name);
                 hit.transform.GetComponent<UsableObjectInterface>().UseObject(hit.transform.gameObject);
             }
         /*    menuManager.HighlightedObject = hit.transform.gameObject;

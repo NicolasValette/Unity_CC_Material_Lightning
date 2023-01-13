@@ -41,10 +41,11 @@ public class ObjectSpawner : MonoBehaviour, UsableObjectInterface
     //    if (Input.GetMouseButtonDown(0))
     //    {
 
-            menuManager.contextualMenu.MenuType = ContextualMenu.MenuTypeEnum.Object;
-            menuManager.contextualMenu.objectTypeText.text = menuManager.contextualMenu.MenuType.ToString();
+        menuManager.contextualMenu.MenuType = ContextualMenu.MenuTypeEnum.Object;
+        menuManager.contextualMenu.objectTypeText.text = menuManager.contextualMenu.MenuType.ToString();
 
-            menuManager.OpenContextualMenu(hitObject.transform.GetComponent<ObjectSpawner>());
+        menuManager.contextualMenu.SelectedObjectSpawner = hitObject.transform.GetComponent<ObjectSpawner>();
+        menuManager.OpenContextualMenu(hitObject.transform.GetComponent<ObjectSpawner>());
     //    }
         
     }

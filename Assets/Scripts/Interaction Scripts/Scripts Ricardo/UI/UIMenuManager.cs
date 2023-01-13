@@ -106,16 +106,21 @@ public class UIMenuManager : MonoBehaviour
         }
     }*/
 
+    
+
     public void ChangeLightColor(ObjectSpawner spawner)
     {
         Color color = PickColorMenu.GetColorFullAlpha();
 
         for (int i = 0; i < spawner.SpawnersGroup.Count; i++)
         {
-            spawner.SpawnersGroup[i].GetComponent<InteractableLight>().light.color = color;
-        //    LightsList[i].EmissionRenderer.material.DisableKeyword("_EMISSION");
+            if (spawner.SpawnersGroup[i].spawnedGameObject.GetComponent<InteractableLight>() != null)
+            {
+                spawner.SpawnersGroup[i].spawnedGameObject.GetComponent<InteractableLight>().light.color = color;
+                spawner.SpawnersGroup[i].spawnedGameObject.GetComponent<InteractableLight>().EmissionRenderer.material.SetColor("_EmissionColor", color);
+            }
+            contextualMenu.SelectedObjectSpawner = null;
         }
-        contextualMenu.SelectedObjectSpawner = null;
     }
 
     void UnlockMouse()

@@ -275,8 +275,8 @@ public Color color {
             materialsSeperated = true;
         }
         if (menuManager == null) menuManager = FindObjectOfType<UIMenuManager>();
-        if (menuManager.contextualMenu.SelectedObjectSpawner != null && menuManager.contextualMenu.SelectedObjectSpawner.SpawnersGroup.Count > 0)
-            ChangeLightColor();
+    //    if (menuManager.contextualMenu.SelectedObjectSpawner != null && menuManager.contextualMenu.SelectedObjectSpawner.SpawnersGroup.Count > 0)
+    //        ChangeLightColor();
     }
 
     /// <summary>
