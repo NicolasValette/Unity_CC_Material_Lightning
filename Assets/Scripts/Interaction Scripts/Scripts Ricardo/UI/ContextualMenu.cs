@@ -15,6 +15,7 @@ public class ContextualMenu : MonoBehaviour
     public GameObject ListContent;
     public GameObject ObjectContentPrefab;
     public GameObject MaterialContentPrefab;
+    public GameObject RotationMenu;
 
     public ObjectSpawner SelectedObjectSpawner;
     public EnvironmentElement SelectedEnvironmentElement;
@@ -22,7 +23,6 @@ public class ContextualMenu : MonoBehaviour
     public List<GameObject> ChoicesList = new List<GameObject>();
 
     public GameObject RemoveButton;
-
 
     public void CreateListContent(ObjectSpawner selectedSpawner)
     {

@@ -23,7 +23,6 @@ public class ToggleLight : MonoBehaviour, UsableObjectInterface
 
     public void ToogleLights()
     {
-        Debug.Log("ToogleLights");
         menuManager.contextualMenu.SelectedObjectSpawner = ControledSpawner;
         if (ControledSpawner.SpawnersGroup.Count > 0)
         {
