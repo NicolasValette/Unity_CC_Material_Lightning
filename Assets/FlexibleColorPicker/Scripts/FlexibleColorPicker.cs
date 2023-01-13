@@ -157,9 +157,9 @@ public class FlexibleColorPicker : MonoBehaviour {
     {
         Color color = GetColorFullAlpha();
 
-        for (int i = 0; i < menuManager.LightsList.Count; i++)
+        for (int i = 0; i < menuManager.contextualMenu.SelectedObjectSpawner.SpawnersGroup.Count; i++)
         {
-            menuManager.LightsList[i].GetComponent<Light>().color = color;
+            menuManager.contextualMenu.SelectedObjectSpawner.SpawnersGroup[i].spawnedGameObject.GetComponent<InteractableLight>().light.color = color;
             //    LightsList[i].EmissionRenderer.material.DisableKeyword("_EMISSION");
         }
     }
@@ -274,8 +274,8 @@ public Color color {
             SeperateMaterials();
             materialsSeperated = true;
         }
-
-        if (menuManager.LightsList.Count > 0)
+        if (menuManager == null) menuManager = FindObjectOfType<UIMenuManager>();
+        if (menuManager.contextualMenu.SelectedObjectSpawner != null && menuManager.contextualMenu.SelectedObjectSpawner.SpawnersGroup.Count > 0)
             ChangeLightColor();
     }
 

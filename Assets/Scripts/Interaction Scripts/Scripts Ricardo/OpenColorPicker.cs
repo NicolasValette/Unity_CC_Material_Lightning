@@ -6,13 +6,16 @@ public class OpenColorPicker : MonoBehaviour, UsableObjectInterface
 {
     public UIMenuManager menuManager;
 
+    public ObjectSpawner ControledSpawner;
+
     public void UseObject(GameObject hitObject)
     {
+        menuManager.contextualMenu.SelectedObjectSpawner = ControledSpawner;
         OpenPickColor();
     }
 
     void OpenPickColor()
     {
-        menuManager.OpenPickColor();
+        menuManager.OpenPickColor(ControledSpawner);
     }
 }

@@ -207,7 +207,6 @@ GameObject:
   - component: {fileID: 7095223743778263197}
   - component: {fileID: 7095223743778263196}
   - component: {fileID: 3208322433230761223}
-  - component: {fileID: 6224182798522074631}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -312,19 +311,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!114 &6224182798522074631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7095223743778263194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35f0953267c107949b0c3ff3f44888ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EmissionRenderer: {fileID: 7095223743449308509}
 --- !u!1 &7095223744191486710
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +323,7 @@ GameObject:
   - component: {fileID: 7095223744191486715}
   - component: {fileID: 7095223744191486712}
   - component: {fileID: 7095223744191486713}
+  - component: {fileID: 4771612753247154478}
   m_Layer: 0
   m_Name: RealtimeLamp
   m_TagString: Untagged
@@ -426,3 +413,17 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &4771612753247154478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7095223744191486710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35f0953267c107949b0c3ff3f44888ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmissionRenderer: {fileID: 7095223743449308509}
+  light: {fileID: 7095223743778263196}

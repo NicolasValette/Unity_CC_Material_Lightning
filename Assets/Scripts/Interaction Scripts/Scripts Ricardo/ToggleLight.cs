@@ -6,6 +6,8 @@ public class ToggleLight : MonoBehaviour, UsableObjectInterface
 {
     public UIMenuManager menuManager;
 
+    public ObjectSpawner ControledSpawner;
+
     public void OnEnable()
     {      
         if (menuManager == null) menuManager = FindObjectOfType<UIMenuManager>();
@@ -17,18 +19,33 @@ public class ToggleLight : MonoBehaviour, UsableObjectInterface
         {
             ToogleLights();
         }
-
-    }
-
-   
+    }   
 
     public void ToogleLights()
     {
-        for (int i = 0; i < menuManager.LightsList.Count; i++)
+        Debug.Log("ToogleLights");
+        menuManager.contextualMenu.SelectedObjectSpawner = ControledSpawner;
+        if (ControledSpawner.SpawnersGroup.Count > 0)
         {
-            menuManager.LightsList[i].GetComponent<Light>().enabled = !menuManager.LightsList[i].GetComponent<Light>().enabled;
-            menuManager.LightsList[i].EmissionRenderer.material.DisableKeyword("_EMISSION");
+            for (int i = 0; i < ControledSpawner.SpawnersGroup.Count; i++)
+            {
+                InteractableLight iL = ControledSpawner.SpawnersGroup[i].spawnedGameObject.GetComponent<InteractableLight>();
+                if (iL != null)
+                {
+                    if (iL.light.enabled == true)
+                    {
+                        iL.light.enabled = !iL.light.enabled;
+                        iL.EmissionRenderer.material.DisableKeyword("_EMISSION");
+                    }
+                    else
+                    {
+                        iL.light.enabled = !iL.light.enabled;
+                        iL.EmissionRenderer.material.EnableKeyword("_EMISSION");
+                    }
+                }
+            }
         }
+        menuManager.contextualMenu.SelectedObjectSpawner = null;
     }
 
     

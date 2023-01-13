@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractableLight : MonoBehaviour
 {
-    [SerializeField]
-     public Renderer EmissionRenderer;
+    
+    public Renderer EmissionRenderer;
+    public Light light;
 }

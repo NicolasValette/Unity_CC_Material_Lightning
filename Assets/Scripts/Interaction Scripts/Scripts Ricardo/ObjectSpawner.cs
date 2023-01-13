@@ -81,7 +81,9 @@ public class ObjectSpawner : MonoBehaviour, UsableObjectInterface
         else AssignOtherObjectsToSpawnerGroup(objectData);
     }
     public void AssignObject(ObjectData objectData)
-    {            
+    {
+        if (menuManager == null) menuManager = FindObjectOfType<UIMenuManager>();
+
         assignedObject = objectData;
         DestroyPreviousSpawnedGameObject();           
      //   SpawnObjectPrefab(objectData.objectPrefab);
@@ -89,7 +91,7 @@ public class ObjectSpawner : MonoBehaviour, UsableObjectInterface
         HideIcon();
         if (objectData.ObjectType == ObjectTypeEnum.Light)
         {
-            menuManager.LightsList.Add(spawnedGameObject.GetComponentInChildren<InteractableLight>());
+         //   menuManager.LightsList.Add(spawnedGameObject.GetComponentInChildren<InteractableLight>());
         }
 
         ApplyOffsets();

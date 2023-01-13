@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +11,7 @@ public class UIMenuManager : MonoBehaviour
 
     public ContextualMenu contextualMenu;
 
-    public GameObject HighlightedObject;
-
-    public List<InteractableLight> LightsList = new List<InteractableLight>();
+    public GameObject HighlightedObject;      
 
 
     public void OnEnable()
@@ -82,8 +81,9 @@ public class UIMenuManager : MonoBehaviour
         LockMouse();
     }
 
-    public void OpenPickColor()
+    public void OpenPickColor(ObjectSpawner selectedSpawner)
     {
+        contextualMenu.SelectedObjectSpawner = selectedSpawner;
         PickColorMenu.gameObject.SetActive(true);
 
         UnlockMouse();
@@ -93,7 +93,7 @@ public class UIMenuManager : MonoBehaviour
     {
         PickColorMenu.gameObject.SetActive(false);
 
-        ChangeLightColor();
+        ChangeLightColor(contextualMenu.SelectedObjectSpawner);
         LockMouse();
     }
     /*
@@ -106,15 +106,16 @@ public class UIMenuManager : MonoBehaviour
         }
     }*/
 
-    public void ChangeLightColor()
+    public void ChangeLightColor(ObjectSpawner spawner)
     {
         Color color = PickColorMenu.GetColorFullAlpha();
 
-        for (int i = 0; i < LightsList.Count; i++)
+        for (int i = 0; i < spawner.SpawnersGroup.Count; i++)
         {
-            LightsList[i].GetComponent<Light>().color = color;
+            spawner.SpawnersGroup[i].GetComponent<InteractableLight>().light.color = color;
         //    LightsList[i].EmissionRenderer.material.DisableKeyword("_EMISSION");
         }
+        contextualMenu.SelectedObjectSpawner = null;
     }
 
     void UnlockMouse()
